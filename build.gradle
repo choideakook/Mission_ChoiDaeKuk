@@ -28,6 +28,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
 	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+	implementation 'com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.4'
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	runtimeOnly 'com.mysql:mysql-connector-j'
@@ -38,4 +39,5 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
+	systemProperty "jasypt.encryptor.password", project.getProperty("jasypt.encryptor.password")
 }
