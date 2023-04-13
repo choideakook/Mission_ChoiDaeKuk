@@ -1,6 +1,5 @@
 package com.lldj.gram.base.init;
 
-import com.lldj.gram.base.request.RsData;
 import com.lldj.gram.boundedContext.instagram.InstagramService;
 import com.lldj.gram.boundedContext.likeable.LikeableService;
 import com.lldj.gram.boundedContext.member.Member;
@@ -12,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-//@Configuration
+@Configuration
 @RequiredArgsConstructor
 public class InitDB {
 

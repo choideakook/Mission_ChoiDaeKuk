@@ -30,7 +30,7 @@
 
 <br>
 
-## 추가 미션 []
-- naver 로그인 연동 []
+## 추가 미션 [v]
+- naver 로그인 연동 [v]
   - Spring OAuth2 클라이언트를 사용한 소셜 로그인 구현 [v]
-  - username 이 to string 형태가 아닌 id 값만 따로 추출된 형태여야 한다. []
+  - username 이 to string 형태가 아닌 id 값만 따로 추출된 형태여야 한다. [v]
