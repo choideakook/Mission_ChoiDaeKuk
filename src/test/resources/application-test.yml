@@ -1,9 +1,14 @@
 spring:
+  profiles:
+    active: test
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/gram_dev?useUnicode=true&characterEncoding=utf8&autoReconnect=true&serverTimezone=Asia/Seoul
-    username: root
-    password: 1234
+    url: jdbc:h2:tcp://localhost/~/team
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  h2:
+    console:
+      enabled: true
   security:
     oauth2:
       client:
@@ -49,3 +54,8 @@ logging.level:
   org.hibernate:
     SQL: debug
     orm.jdbc.bind: trace
+
+jasypt:
+  encryptor:
+    bean: jasyptStringEncryptor
+    password: qorwns
