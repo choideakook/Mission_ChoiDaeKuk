@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -30,6 +32,10 @@ public class LikeableService {
         // 자기 스르로 호감표시 금지
         if (member.getInstagramName().equals(instagramName))
             return RsData.of("F-2", "자기 자신에게 호감표시할 수 없습니다.");
+
+        // 10명까지 호감 표시 가능
+        if(member.getLikeableList().size() >= 10)
+            return RsData.of("F-3", "호감표시는 최대 10명까지 가능합니다.");
 
         // 인스타 이름으로 호감표시 대상 검색
         RsData<Instagram> instagramRs = instagramService.findByName(instagramName);
@@ -61,5 +67,24 @@ public class LikeableService {
         }
 
         return RsData.of("F-1", "존재하지 않는 id 입니다.");
+    }
+
+    //-- 중복 호감 여부 확인 --//
+    public boolean duplicateInvalid(List<Likeable> likeableList, String instagramName) {
+        List<Instagram> instagramList = new ArrayList<>();
+        for (Likeable likeable : likeableList)
+            instagramList.add(likeable.getInstagram());
+
+        for (Instagram instagram : instagramList)
+            if (instagram.getUsername().equals(instagramName))
+                return false;
+
+        return true;
+    }
+
+    //-- 매력 수정 로직 --//
+    @Transactional
+    public void updateAttractive(Likeable likeable, Integer attractive) {
+        likeable.updateAttractive(attractive);
     }
 }

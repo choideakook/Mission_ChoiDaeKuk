@@ -44,7 +44,6 @@ public class Likeable {
         likeable.member = member;
         likeable.instagram = instagram;
         member.getLikeableList().add(likeable);
-        member.getInstagramList().add(instagram);
         instagram.getLikeableList().add(likeable);
         return likeable;
     }
@@ -58,5 +57,11 @@ public class Likeable {
             case 2 -> this.attractive = "성격";
             default -> this.attractive = "능력";
         };
+    }
+
+    // 매력 update //
+    protected void updateAttractive(Integer attractiveCode) {
+        String attractive = this.attractiveMapper(attractiveCode);
+        this.attractive = attractive;
     }
 }
